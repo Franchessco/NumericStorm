@@ -1,0 +1,17 @@
+﻿################################################################################
+# Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
+################################################################################
+
+*.vsidx
+*.ipch
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.tlog
+*.recipe
+*.log
+*.sqlite
+/NumericWorm/NumericWorm/x64/Debug
+/NumericWorm/NumericStorm/x64/Debug
+/NumericWorm/x64/Debug
