@@ -2,8 +2,11 @@
 
 #include <iostream>
 
+#include "./Fitting/Data.hpp"
+#include "./Fitting/Fitter.hpp"
+#include "./Fitting/Parameters.hpp"
 
-// #include "Fitting/"
+
 namespace NumericStorm 
 {
 

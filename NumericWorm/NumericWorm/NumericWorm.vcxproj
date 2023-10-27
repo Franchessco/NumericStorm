@@ -135,12 +135,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\NumericStorm\src\Fitting\Data.cpp" />
+    <ClCompile Include="..\NumericStorm\src\Fitting\Parameters.cpp" />
     <ClCompile Include="src\Apllication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NumericStorm\NumericStorm.vcxproj">
       <Project>{a6073365-8e66-4566-8b9c-c144e8383d64}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\NumericStorm\headers\Fitter.hpp" />
+    <ClInclude Include="..\NumericStorm\headers\Fitting\Data.hpp" />
+    <ClInclude Include="..\NumericStorm\headers\Fitting\Parameters.hpp" />
+    <ClInclude Include="headers\Apllication.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
