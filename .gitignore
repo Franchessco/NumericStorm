@@ -15,3 +15,5 @@
 /NumericWorm/NumericWorm/x64/Debug
 /NumericWorm/NumericStorm/x64/Debug
 /NumericWorm/x64/Debug
+*.json
+/NumericWorm/.vs/NumericWorm/v17/TestStore/0
