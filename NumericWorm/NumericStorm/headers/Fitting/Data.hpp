@@ -1,5 +1,5 @@
 #pragma once
-#include <array>
+#include <vector>
 
 namespace NumericStorm
 {
@@ -18,8 +18,8 @@ public:
 	std::vector<T> getY() const { return m_y; };
 	friend class Fitter;
 
-	virtual setX(std::vector<T> x) = 0;// do more than setting, also checking the condition
-	virtual sety(std::vector<T> y) = 0;// do more than setting, also checking the condition
+	virtual setX(std::vector<T> x){return m_x};// do more than setting, also checking the condition
+	virtual sety(std::vector<T> y){return m_y};// do more than setting, also checking the condition
 };
 
 
