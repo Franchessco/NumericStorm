@@ -18,8 +18,8 @@ public:
 	std::vector<T> getY() const { return m_y; };
 	friend class Fitter;
 
-	virtual setX(std::vector<T> x){return m_x};// do more than setting, also checking the condition
-	virtual sety(std::vector<T> y){return m_y};// do more than setting, also checking the condition
+	virtual void setX(std::vector<T> x){m_x = x};// do more than setting, also checking the condition
+	virtual void sety(std::vector<T> y){m_y = y};// do more than setting, also checking the condition
 };
 
 

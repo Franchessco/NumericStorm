@@ -24,6 +24,15 @@
     <ClCompile Include="..\NumericStorm\src\Fitting\Data.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="..\NumericStorm\src\Fitting\Simplex\SimplexSolver.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NumericStorm\headers\Fitting\Simplex\Bounds.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NumericStorm\src\Fitting\MeasuringFunctions.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Apllication.hpp">
@@ -36,6 +45,15 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="..\NumericStorm\headers\Fitting\Data.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NumericStorm\headers\Fitting\Simplex\SimplexSolver.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NumericStorm\src\Fitting\Simplex\Bounds.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NumericStorm\headers\Fitting\MeasuringFunctions.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

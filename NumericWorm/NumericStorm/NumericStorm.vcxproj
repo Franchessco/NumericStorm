@@ -131,9 +131,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Fitting\Data.hpp" />
+    <ClInclude Include="headers\Fitting\Fitter.hpp" />
+    <ClInclude Include="headers\Fitting\Fitting.hpp" />
+    <ClInclude Include="headers\Fitting\Parameters.hpp" />
+    <ClInclude Include="headers\Fitting\Simplex\Bounds.hpp" />
     <ClInclude Include="headers\NumericStorm.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Fitting\Data.cpp" />
+    <ClCompile Include="src\Fitting\Fitter.cpp" />
+    <ClCompile Include="src\Fitting\Parameters.cpp" />
+    <ClCompile Include="src\Fitting\Simplex\Bounds.cpp" />
     <ClCompile Include="src\NumericStorm.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
