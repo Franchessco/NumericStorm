@@ -5,21 +5,23 @@
 
 namespace NumericStorm {
 
-	typedef Data (*func)(Parameters& param);
-
+	typedef Data<double> (*func)(Parameters& param);
 	class Fitter
 	{
+	private:
+		Parameters m_proposalParameters;
 	protected:
 		Parameters m_fittedParameters;
-		Data m_data;
+		Data<double> m_data ;
 		func m_model;
-		Fitter(func model, Parameters& data)
-			:m_model(model), m_data(data){};
+		Fitter(func model, Data<double>& data,Parameters proposalParameters)
+			:m_model(model), m_data(data),m_proposalParameters(proposalParameters){};
 	
 	public:
 		virtual Parameters getParameters() const = 0;
 		virtual void setParameters(Parameters param) = 0;
-		Data model(Parameters& param) { return m_model(param); };
+		virtual Data<double> model(Parameters param) { return m_model(param); };
+		
 	};
 
 }
