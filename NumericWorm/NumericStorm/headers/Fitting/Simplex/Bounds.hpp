@@ -1,21 +1,21 @@
 #pragma once
 #include <array>
 
+#include "../Parameters.hpp"
 namespace NumericStorm 
 {
 
 template <typename T, size_t s>
 
-class Bounds
+class Bounds :public Parameters
 {
-private:
-	std::array<T, s> m_Bounds;
 
 public:
 	template <typename ... Args>
 	Bounds(Args... args)
-		:m_Bounds(args...) {};
-	~Bounds() {};
+		:Parameters(args...) {};
+	
+	//TODO ovrride method for comparacent by value instead by chi2
 };
 
 }

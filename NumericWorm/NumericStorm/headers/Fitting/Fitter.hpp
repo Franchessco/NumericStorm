@@ -5,39 +5,39 @@
 #include "Data.hpp"
 
 namespace NumericStorm {
-template<size_t s>
+template<typename T_d,typename T_p,size_t s_p,size_t s_d>
 
-// typedef Data<double> (*func)(const Parameters<double,s><double,>& param);
+typedef Data<T_d,s_d> (*func)(const Parameters<T_p,s_p>& param);
 class Fitter
 {
-	typedef std::unique_ptr<Data<double>> (*func)(const Parameters<double,s>& param);
+	typedef std::unique_ptr<Data<T_d,s_d>> (*func)(const Parameters<T_d,s_p>& param);
 private:
-	Parameters<double,s> m_proposalParameters;
+	Parameters<T_d,s_p> m_proposalParameters;
 protected:
-	Parameters<double,s> m_fittedParameters;
-	std::unique_ptr<Data<double>> m_data;
+	Parameters<T_d,s_p> m_fittedParameters;
+	std::unique_ptr<Data<T_d,s_d>> m_data;
 	func m_model;
 	Fitter() {};
-	Fitter(func model, Data<double>& data,Parameters<double,s> proposalParameters)
+	Fitter(func model, Data<T_d,s_d>& data,Parameters<T_d,s_p> proposalParameters)
 		:m_model(model), m_data(&data),m_proposalParameters(proposalParameters){};
-	Fitter(Fitter& other) {};
-	Fitter(Fitter&& other) {};
-	~Fitter() {};
+	Fitter(Fitter& other) {};  //TODO write this constructors(copy)
+	Fitter(Fitter&& other) {}; //TODO write this constructors(move) 
+	~Fitter() {}; //! I don't have to free memory, because smart pointers
 
 public:
-	virtual Parameters<double,s> getParameters() const = 0;
-	virtual void setParameters(Parameters<double,s> param) = 0;
-	virtual std::unique_ptr<Data<double>> model(Parameters<double,s> param) const 
+	virtual Parameters<T_d,s_p> getParameters() const = 0;
+	virtual void setParameters(Parameters<T_d,s_p> param) = 0;
+	virtual std::unique_ptr<Data<T_d,s_d>> model(Parameters<T_d,s_p> param) const 
 		{ return m_model(param); };
 	/*
 	
-	virtual Data<double> model(Parameters<double,s> param) const
+	virtual Data<double> model(Parameters<double,s_p> param) const
 	{
 		return m_model(param);
 	};
 	*/
-	virtual Parameters<double,s> fit() = 0;
-	virtual Parameters<double,s> minimize() = 0;
+	virtual Parameters<double,s_p> fit() = 0;
+	virtual Parameters<double,s_p> minimize() = 0;
 };
 
 }

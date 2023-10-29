@@ -1,25 +1,25 @@
 #pragma once
-#include <vector>
+#include <array>
 
 namespace NumericStorm
 {
-template <typename T>
+template <typename T,size_t s>
 
 class Data
 {
 protected:
-	std::vector<T> m_x;
-	std::vector<T> m_y;
-	Data(const std::vector<T>& x, const std::vector<T>& y)
+	std::array<T,s> m_x;
+	std::array<T,s> m_y;
+	Data(const std::array<T,s>& x, const std::array<T,s>& y)
 		:m_x(x), m_y(y) {};
 
 public:
-	std::vector<T> getX() const { return m_x; };
-	std::vector<T> getY() const { return m_y; };
+	std::array<T,s> getX() const { return m_x; };
+	std::array<T,s> getY() const { return m_y; };
 	friend class Fitter;
 
-	void setX(std::vector<T> x){m_x = x};// do more than setting, also checking the condition
-	void sety(std::vector<T> y){m_y = y};// do more than setting, also checking the condition
+	void setX(std::array<T,s> x){m_x = x};// do more than setting, also checking the condition
+	void sety(std::array<T,s> y){m_y = y};// do more than setting, also checking the condition
 };
 
 

@@ -1,6 +1,6 @@
 #pragma once
 #include <array>
-#include <memory>
+
 
 namespace NumericStorm{
 template <typename T,size_t s>
@@ -18,8 +18,12 @@ public:
 
 	bool operator == (const Parameters& other) const 
 	{
-
 	}
+		//TODO implement ==, !=, >,<, >=, <=, 
+		//TODO ++, --, +=, -=, *, / (for float,double,int)
+		//TODO ++, --, +=, -=, (cosnt Parameters& other)
+		//TODO implement [] operator Parameter& operator [](int)
+		//TODO implement [] operator std::vector<Parameter&> operator ["1:6:-1"](try string like python)
 };
 
 }
