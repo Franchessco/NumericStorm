@@ -8,3 +8,4 @@ namespace NumericStorm
 		std::cout << "Testing making libraries!" << std::endl;
 	}
 }
+	

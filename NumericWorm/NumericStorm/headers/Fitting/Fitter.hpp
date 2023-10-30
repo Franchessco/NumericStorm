@@ -5,9 +5,10 @@
 #include "Data.hpp"
 
 namespace NumericStorm {
+
 template<typename T_d,typename T_p,size_t s_p,size_t s_d>
 
-typedef Data<T_d,s_d> (*func)(const Parameters<T_p,s_p>& param);
+//typedef Data<T_d,s_d> (*func)(const Parameters<T_p,s_p>& param);
 class Fitter
 {
 	typedef std::unique_ptr<Data<T_d,s_d>> (*func)(const Parameters<T_d,s_p>& param);
