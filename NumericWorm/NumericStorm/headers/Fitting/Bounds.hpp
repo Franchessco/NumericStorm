@@ -19,8 +19,8 @@ public:
 		:Parameters(args...) {};
 
 
-	Bounds<T,s> operator - override(const Bounds<T,s>& other);
-	Bounds<T,s> operator / override(float denominator);
+	Bounds<T,s> operator - (const Bounds<T,s>& other);
+	Bounds<T,s> operator / (float denominator);
 
 };
 
