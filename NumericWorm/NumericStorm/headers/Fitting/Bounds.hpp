@@ -21,7 +21,8 @@ public:
 
 	Bounds<T,s> operator - (const Bounds<T,s>& other);
 	Bounds<T,s> operator / (float denominator);
-
+	Bounds<T, s> operator + (const Bounds<T, s>& other);
+	Bounds<T, s> operator * (float mult);
 };
 
 }

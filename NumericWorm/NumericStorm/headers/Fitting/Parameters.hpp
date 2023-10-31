@@ -18,6 +18,7 @@ public:
 	Parameters(Args... args)
 		:m_parameters(args...) {};
 	~Parameters() {};
+	Parameters(Parameters&& other);
 	bool operator == (Parameters& other) const;
 	bool operator != (Parameters& other)const;
 	
