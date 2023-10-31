@@ -1,29 +1,41 @@
 #pragma once
 #include <array>
+#include <string>
 
+#include "Bounds.hpp"
 
 namespace NumericStorm{
-template <typename T,size_t s>
+namespace Fitting{
 
+template <typename T, size_t s>
 class Parameters
 {
+private:
+	std::array<T, s> m_parameters;
 	
-private: 
-	std::array<T,s> m_parameters;
 public:
 	template <typename ... Args>
-	Parameters(Args... args) 
+	Parameters(Args... args)
 		:m_parameters(args...) {};
 	~Parameters() {};
-
-	bool operator == (const Parameters& other) const 
+	bool operator == (Parameters& other) const
 	{
-	}
-		//TODO implement ==, !=, >,<, >=, <=, 
-		//TODO ++, --, +=, -=, *, / (for float,double,int)
-		//TODO ++, --, +=, -=, (cosnt Parameters& other)
-		//TODO implement [] operator Parameter& operator [](int)
-		//TODO implement [] operator std::vector<Parameter&> operator ["1:6:-1"](try string like python)
+		for (int i = 0; i < s; i++)
+			if (m_parameters[i] != other[i])
+				return false;
+		return true;
+		}
+	bool operator != (Parameters& other)const
+				{
+					return !(*this == other)
+				}
+//TODO implement ==, !=, >,<, <=, 
+//TODO ++, --, +=, -=, *,  (float,double,int)
+//TODO ++, --, +=, -=, (Parameters& other)
+//TODO implement [] Parameter& operator ](int)
+//TODO implement [] std::vector<Parameter& ["1:6:-1"](try string like python)
 };
+
+}
 
 }

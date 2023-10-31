@@ -2,7 +2,10 @@
 #include <array>
 
 namespace NumericStorm
+{ 
+namespace Fitting 
 {
+
 template <typename T,size_t s>
 
 class Data
@@ -19,9 +22,10 @@ public:
 	friend class Fitter;
 
 	void setX(std::array<T,s> x){m_x = x};// do more than setting, also checking the condition
-	void sety(std::array<T,s> y){m_y = y};// do more than setting, also checking the condition
+	void setY(std::array<T,s> y){m_y = y};// do more than setting, also checking the condition
 };
 
 
+}
 }
 

@@ -5,6 +5,8 @@
 #include "Data.hpp"
 
 namespace NumericStorm {
+namespace Fitting {
+
 
 template<typename T_d,typename T_p,size_t s_p,size_t s_d>
 
@@ -41,4 +43,5 @@ public:
 	virtual Parameters<double,s_p> minimize() = 0;
 };
 
+}
 }

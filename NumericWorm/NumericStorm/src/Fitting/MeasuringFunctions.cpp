@@ -1,6 +1,8 @@
-#include "Fitting/MeasuringFunctions.hpp"
+#include "../headers/Fitting/MeasuringFunctions.hpp"
 
 namespace NumericStorm{
+namespace Fitting {
+
 
 template<typename T, size_t s>
 double MeasuringFunctions<T, s>::chi2_norm(std::array<T, s>& mother, std::array<T, s>& child)
@@ -26,5 +28,6 @@ double MeasuringFunctions<T, s>::mean_absolut_norm(std::array<T, s>& mother, std
 	return 0.0;
 }
 
+}
 }
 

@@ -2,11 +2,8 @@
 
 namespace NumericStorm 
 {
-	class SimplexSolver : public Fitter 
-	{
-		
-
-		
-	};
+namespace Fitting 
+{
+}
 
 }

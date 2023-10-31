@@ -138,6 +138,7 @@
     <ClInclude Include="headers\Fitting\Simplex\Bounds.hpp" />
     <ClInclude Include="headers\Fitting\Simplex\SimpleSimplex\SimpleSimplex.hpp" />
     <ClInclude Include="headers\Fitting\Simplex\SimplexFigure.hpp" />
+    <ClInclude Include="headers\Fitting\Simplex\SimplexPoint.hpp" />
     <ClInclude Include="headers\NumericStorm.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,7 @@
     <ClCompile Include="src\Fitting\Simplex\Bounds.cpp" />
     <ClCompile Include="src\Fitting\Simplex\SimpleSimpex\SimpleSimplex.cpp" />
     <ClCompile Include="src\Fitting\Simplex\SimplexFigure.cpp" />
+    <ClCompile Include="src\Fitting\Simplex\SimplexPoint.cpp" />
     <ClCompile Include="src\NumericStorm.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

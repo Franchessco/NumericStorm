@@ -3,6 +3,8 @@
 
 namespace NumericStorm {
 
+namespace Fitting 
+{
 
 	template <typename T, size_t s>
 	class MeasuringFunctions
@@ -18,5 +20,5 @@ namespace NumericStorm {
 		
 		//todo implement measuring funcitons based on mapping and streams
 	};
-
+}
 }

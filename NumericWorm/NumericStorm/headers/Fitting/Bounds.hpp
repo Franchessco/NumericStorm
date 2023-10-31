@@ -1,8 +1,11 @@
 #pragma once
 #include <array>
 
-#include "../Parameters.hpp"
+#include "../Fitting/Parameters.hpp"
+
 namespace NumericStorm 
+{
+namespace Fitting 
 {
 
 template <typename T, size_t s>
@@ -14,10 +17,14 @@ public:
 	template <typename ... Args>
 	Bounds(Args... args)
 		:Parameters(args...) {};
-	
-	//TODO ovrride method for comparacent by value instead by chi2
+
+
+	Bounds<T,s> operator - override(const Bounds<T,s>& other);
+	Bounds<T,s> operator / override(float denominator);
+
 };
 
+}
 }
 
 

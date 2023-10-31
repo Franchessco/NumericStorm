@@ -9,7 +9,8 @@
 
 namespace NumericStorm 
 {
-namespace Fitting {
+namespace Fitting 
+{
 
 
 template<typename T_d,typename T_p, size_t s_d,size_t s_p>
@@ -24,6 +25,7 @@ private:
 	std::string m_method_error;
 	Bounds m_loweBounds;
 	Bounds m_upperBounds;
+	SimpelxFigure vertex;
 public:
 	SimplexSolver() :Fitter(){};
 
