@@ -1,4 +1,4 @@
-#include "../headers/Fitting/MeasuringFunctions.hpp"
+#include "../headers/MeasuringFunctions.hpp"
 
 namespace NumericStorm{
 namespace Fitting {

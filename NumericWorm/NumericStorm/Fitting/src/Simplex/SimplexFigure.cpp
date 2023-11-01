@@ -1,4 +1,4 @@
-#include "../../../headers/Fitting/Simplex/SimplexFigure.hpp"
+#include "../../headers/Simplex/SimplexFigure.hpp"
 
 namespace NumericStorm 
 {

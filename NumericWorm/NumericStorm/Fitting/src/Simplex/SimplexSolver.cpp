@@ -1,4 +1,4 @@
-#include "../headers/Fitting/Data.hpp"
+#include "../../headers/Simplex/SimplexSolver.hpp"
 
 namespace NumericStorm 
 {

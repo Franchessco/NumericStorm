@@ -1,6 +1,6 @@
-#include "../../headers/Fitting/Fitting.hpp"
-#include "../../headers/Fitting/Bounds.hpp"
-#include "../../headers/Fitting/Parameters.hpp"
+#include "../headers/Fitting/Fitting.hpp"
+#include "../headers/Fitting/Bounds.hpp"
+#include "../headers/Fitting/Parameters.hpp"
 namespace NumericStorm
 {
 namespace Fitting 

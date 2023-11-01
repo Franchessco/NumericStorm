@@ -1,6 +1,5 @@
-#include "Bounds.hpp"
-#include "Bounds.hpp"
-#include "headers/Fitting/Bounds.hpp"
+#include "../headers/Bounds.hpp"
+
 
 namespace NumericStorm 
 {

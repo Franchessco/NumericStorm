@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../../headers/Fitting/Simplex/SimpleSimplex/SimpleSimplex.hpp"
+#include "../SimplexSolver.hpp"
 
 namespace NumericStorm 
 {

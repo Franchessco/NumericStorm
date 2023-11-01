@@ -1,5 +1,5 @@
-#include "../../../headers/Fitting/Simplex/SimplexPoint.hpp"
-#include"../../../headers/Fitting/Bounds.hpp"
+#include "../../headers/Simplex/SimplexPoint.hpp"
+#include "../../headers/Bounds.hpp"
 
 namespace NumericStorm
 {

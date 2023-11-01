@@ -12,8 +12,8 @@ private:
 public:
 	template <typename Args... args>
 	SimplexPoint() {};
-	SimplexPoint(const Parameters<T,s>& other)
-		:Parameters(std::move(other));
+	SimplexPoint(const Parameters<T, s>& other)
+		:Parameters(std::move(other)) {};
 	void PointToBound(const Bounds<T, s>& other,std::string type);
 	
 	
@@ -21,7 +21,6 @@ public:
 
 
 }
+}
 
-}
-}
 
