@@ -12,7 +12,6 @@ class Parameters
 {
 private:
 	std::array<T, s> m_parameters;
-	
 public:
 	template <typename ... Args>
 	Parameters(Args... args)
@@ -21,6 +20,8 @@ public:
 	Parameters(Parameters&& other);
 	bool operator == (Parameters& other) const;
 	bool operator != (Parameters& other)const;
+	
+
 	
 //TODO implement ==, !=, >,<, <=, 
 //TODO ++, --, +=, -=, *,  (float,double,int)

@@ -21,7 +21,7 @@ namespace Fitting
 	}
 	
 	template<typename T, size_t s>
-	inline bool Parameters<T, s>::operator!=(Parameters& other) const
+	bool Parameters<T, s>::operator!=(Parameters& other) const
 	{
 		return !(*this == other)
 	}
