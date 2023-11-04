@@ -5,6 +5,7 @@
 #include "Fitting/Bounds.hpp"
 
 #include <string>
+#include <memory>
 
 
 namespace NumericStorm 
@@ -16,36 +17,28 @@ namespace Fitting
 template<typename T_d,typename T_p, size_t s_d,size_t s_p>
 class SimplexSolver: public Fitter
 {
-	using Data_t = Data<T_d, s_d>;
-	typedef error_method_func_ = double(*error_method_func)(const Data_t& mother, const Data_t& child);
+	//using Data_t = Data<T_d, s_d>;
+	typedef error_method_func_ = double(*error_method_func)(const Data<T_d, s_d>& mother, const Data<T_d, s_d>& child);
 	
 private:
-	double m_max_error;
-	auto m_error_method;
-	std::string m_method_error;
-	Bounds<T_p,s_p> m_loweBounds;
-	Bounds<T_p,s_p> m_upperBounds;
+	//double m_max_error;
+	//auto m_error_method;
+	//std::string m_method_error;
 	SimpelxFigure<T_p, s_p+1> vertex;
 public:
-	SimplexSolver() :Fitter(){};
+	SimplexSolver() 
+		:Fitter(){};
 
 	SimplexSolver(
 		func model,
-		Data_t& data,
-		Parameters<T_p, s_p> proposalParameters,
-		double max_error,
-		Bounds<T_p, s_p>  lowerBounds;
-		Bounds<T_p, s_p>  upperBounds;
-		error_method_func_ error_method = nullptr,
-		std::string method_error = "chi2",
-		)
-
-	:Fitter(model,data,proposalParameters), m_max_error(max_error),
-	m_error_method(error_method), m_method_error(method_error),
-	m_lowerBounds(lowerBounds),m_upperBounds(upperBounds){};
+		std::uniq_ptr<Data<T_d,s_d>& data>,
+		Bounds<T_p, s_p>  lowerBounds,Bounds<T_p, s_p> upperBounds)
+		:Fitter(model, data),vertex(lowerbounds,upperbounds){}
 
 	~SimplexSolver() {};
-
+	virtual fit(double max_error,error_method_func_ error_method = nullptr,
+		std::string method_error = "chi2" ) = 0
+	
 };
 }
 
