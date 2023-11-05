@@ -19,10 +19,10 @@ public:
 		:Parameters(args...) {};
 
 
-	Bounds<T,s> operator - (const Bounds<T,s>& other);
-	Bounds<T,s> operator / (float denominator);
-	Bounds<T, s> operator + (const Bounds<T, s>& other);
-	Bounds<T, s> operator * (float mult);
+	Parameters<T,s> operator - (const Bounds<T,s>& other);
+	Parameters<T,s> operator / (float denominator);
+	Parameters<T, s> operator + (const Bounds<T, s>& other);
+	Parameters<T, s> operator * (float mult);
 };
 
 }

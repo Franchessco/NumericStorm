@@ -19,7 +19,8 @@ namespace NumericStorm
 					continue;
 			}
 			return false;
-		};
+		}
+
 
 		template<typename T, size_t s>
 		bool SimplexPoint<T, s>::operator < (const Bounds& other1)
@@ -36,9 +37,10 @@ namespace NumericStorm
 		}
 
 
-		unsigned double claculateError(const Data<T_d, s_d>& data, error_funcerror_function)
-		{
 
+		unsigned double claculateError(const Data<T_d, s_d>& data, *error_func error_function)
+		{
+			//return error_function(;
 			return 0.0;
 		}
 

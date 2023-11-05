@@ -17,10 +17,10 @@ int main()
 	//! Parameters proposal_parameters = Parameters(a,b,c,d,....);
 	//! Fitter fitter = SimpleSimplex(my_model,dataToFit,min_bounds,max_bounds,);
 	
-	//? setting error functions
-	//! std::string error_function = "chi2";
+	//? setting max error 
+	//! double max_error = 10;
 	//? fit data
-	//! fitter.fit();
+	//! fitter.fit(max_error);
 	
 	NumericStorm::PrintMessage();
 	return 0;

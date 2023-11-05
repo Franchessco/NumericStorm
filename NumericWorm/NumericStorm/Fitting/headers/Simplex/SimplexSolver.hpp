@@ -36,8 +36,8 @@ public:
 		:Fitter(model, data),vertex(lowerbounds,upperbounds){}
 
 	~SimplexSolver() {};
-	virtual fit(double max_error,error_method_func_ error_method = nullptr,
-		std::string method_error = "chi2" ) = 0
+	virtual Parameters<T_p,s_p> fit(double max_error,error_method_func_ error_method = nullptr,
+		std::string method_error = "chi2" ) override = 0
 	
 };
 }
