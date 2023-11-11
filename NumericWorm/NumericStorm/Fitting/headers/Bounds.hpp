@@ -10,18 +10,10 @@ template <typename T, size_t s>
 class Bounds : public Parameters<T, s> {
 
 public:
-    // Constructor
+    
     template <typename... Args>
     Bounds(Args... args) : Parameters<T, s>(args...) {}
-    Bounds<T, s>& operator=(const Bounds<T, s>& other);
-    Bounds<T, s> operator+(const Bounds<T, s>& other) const;
-    Bounds<T, s> operator-(const Bounds<T, s>& other) const;
-    Bounds<T, s> operator*(const float& mult) const;
-    Bounds<T, s> operator/(const float& denominator) const;
-    Bounds<T, s>& operator+=(const Bounds<T, s>& other);
-    Bounds<T, s>& operator-=(const Bounds<T, s>& other);
-    Bounds<T, s>& operator*=(const float& mult);
-    Bounds<T, s>& operator/=(const float& denominator);
+    
 
 
 // Copy assignment operator
@@ -29,7 +21,7 @@ Bounds<T, s>& operator=(const Bounds<T, s>& other)
 {
     if (this == &other) 
         {return *this;}
-    m_parameters = other.m_parameters;
+    m_parameters = other.getParamters();
     return *this;
 }
 
@@ -41,7 +33,6 @@ Bounds<T, s> operator+(const Bounds<T, s>& other) const {
     
     return result;
 }
-
 Bounds<T, s> operator-(const Bounds<T, s>& other) const {
     Bounds<T, s> result = *this;
     for (int i = 0; i < s; i++) 
@@ -49,7 +40,6 @@ Bounds<T, s> operator-(const Bounds<T, s>& other) const {
     
     return result;
 }
-
 Bounds<T, s> operator*(const float& mult) const {
     Bounds<T, s> result = *this;
     for (int i = 0; i < s; i++) 
@@ -57,7 +47,6 @@ Bounds<T, s> operator*(const float& mult) const {
     
     return result;
 }
-
 Bounds<T, s> operator/(const float& denominator) const {
     Bounds<T, s> result = *this;
     for (int i = 0; i < s; i++) 
@@ -73,27 +62,25 @@ Bounds<T, s>& operator+=(const Bounds<T, s>& other) {
 
     return *this;
 }
-
 Bounds<T, s>& operator-=(const Bounds<T, s>& other) {
     for (int i = 0; i < s; i++) 
         {(*this)[i] -= other[i];}
 
     return *this;
 }
-
 Bounds<T, s>& operator*=(const float& mult) {
     for (int i = 0; i < s; i++) 
     {(*this)[i] *= mult;}
 
     return *this;
 }
-
 Bounds<T, s>& operator/=(const float& denominator) {
     for (int i = 0; i < s; i++) 
         {(*this)[i] /= denominator;}
 
     return *this;
 }
+
 };
   
 }

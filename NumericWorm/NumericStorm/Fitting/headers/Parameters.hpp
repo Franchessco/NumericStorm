@@ -11,7 +11,7 @@ namespace Fitting{
 template <typename T, size_t s>
 class Parameters
 {
-private:
+protected:
 	std::array<T, s> m_parameters;
 public:
 	template <typename ... Args>
@@ -21,11 +21,12 @@ public:
 	Parameters(Parameters&& other);
 	bool operator == (Parameters<T,s>& other) const;
 	bool operator != (Parameters<T,s>& other)const;
+	std::array<T, s> getParameters() { return m_parameters; };
 	T& operator [](int index) const;
-	T& operator [](int index);
+	/*T& operator [](int index);*/
 
 
-	Parameters<T, s>::Parameters(Parameters<T, s>&& other)
+	Parameters<T, s> Parameters(Parameters<T, s>&& other)
 	{
 		for (int i = 0; i == s; i++)
 			m_parameters[i] = other[i];
