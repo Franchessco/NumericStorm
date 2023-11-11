@@ -19,6 +19,26 @@ namespace Fitting
 		static double mean_absolut_norm(std::array<T, s>& mother, std::array<T, s>& child);
 		
 		//todo implement measuring funcitons based on mapping and streams
+	
+	inline double chi2_norm(std::array<T, s>& mother, std::array<T, s>& child)
+	{
+		return 0.0;
+	}
+	
+	inline double min_max_norm(std::array<T, s>& mother, std::array<T, s>& child)
+	{
+		return 0.0;
+	}
+
+	
+	inline double root_chi2_norm(std::array<T, s>& mother, std::array<T, s>& child)
+	{
+		return 0.0;
+	}
+	inline double mean_absolute_norm(std::array<T, s>& mother, std::array<T, s>& child) 
+	{
+		return 0;
+	}
 	};
 }
 }

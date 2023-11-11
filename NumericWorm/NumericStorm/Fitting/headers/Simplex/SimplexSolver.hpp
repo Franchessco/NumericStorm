@@ -15,7 +15,7 @@ namespace Fitting
 
 
 template<typename T_d,typename T_p, size_t s_d,size_t s_p>
-class SimplexSolver: public Fitter
+class SimplexSolver: public Fitter<T_d,T_p,s_d,s_p>
 {
 	//using Data_t = Data<T_d, s_d>;
 	typedef error_method_func_ = double(*error_method_func)(const Data<T_d, s_d>& mother, const Data<T_d, s_d>& child);

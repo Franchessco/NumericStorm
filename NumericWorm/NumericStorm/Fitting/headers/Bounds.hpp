@@ -1,34 +1,100 @@
 #pragma once
 #include <array>
 
-#include "../Fitting/Parameters.hpp"
+#include "Parameters.hpp"
 
-namespace NumericStorm 
-{
-namespace Fitting 
-{
+namespace NumericStorm {
+namespace Fitting {
 
 template <typename T, size_t s>
-
-class Bounds :public Parameters
-{
+class Bounds : public Parameters<T, s> {
 
 public:
-	template <typename ... Args>
-	Bounds(Args... args)
-		:Parameters(args...) {};
+    // Constructor
+    template <typename... Args>
+    Bounds(Args... args) : Parameters<T, s>(args...) {}
+    Bounds<T, s>& operator=(const Bounds<T, s>& other);
+    Bounds<T, s> operator+(const Bounds<T, s>& other) const;
+    Bounds<T, s> operator-(const Bounds<T, s>& other) const;
+    Bounds<T, s> operator*(const float& mult) const;
+    Bounds<T, s> operator/(const float& denominator) const;
+    Bounds<T, s>& operator+=(const Bounds<T, s>& other);
+    Bounds<T, s>& operator-=(const Bounds<T, s>& other);
+    Bounds<T, s>& operator*=(const float& mult);
+    Bounds<T, s>& operator/=(const float& denominator);
 
 
-	Parameters<T,s> operator - (const Bounds<T,s>& other);
-	Parameters<T,s> operator / (float denominator);
-	Parameters<T, s> operator + (const Bounds<T, s>& other);
-	Parameters<T, s> operator * (float mult);
+// Copy assignment operator
+Bounds<T, s>& operator=(const Bounds<T, s>& other) 
+{
+    if (this == &other) 
+        {return *this;}
+    m_parameters = other.m_parameters;
+    return *this;
+}
+
+// Arithmetic operations
+Bounds<T, s> operator+(const Bounds<T, s>& other) const {
+    Bounds<T, s> result = *this;
+    for (int i = 0; i < s; i++) 
+        {result[i] = (*this)[i] + other[i];}
+    
+    return result;
+}
+
+Bounds<T, s> operator-(const Bounds<T, s>& other) const {
+    Bounds<T, s> result = *this;
+    for (int i = 0; i < s; i++) 
+        {result[i] = (*this)[i] - other[i];}
+    
+    return result;
+}
+
+Bounds<T, s> operator*(const float& mult) const {
+    Bounds<T, s> result = *this;
+    for (int i = 0; i < s; i++) 
+        {result[i] = (*this)[i] * mult;}
+    
+    return result;
+}
+
+Bounds<T, s> operator/(const float& denominator) const {
+    Bounds<T, s> result = *this;
+    for (int i = 0; i < s; i++) 
+        {result[i] = (*this)[i] / denominator;}
+
+    return result;
+}
+
+// Compound assignment operators
+Bounds<T, s>& operator+=(const Bounds<T, s>& other) {
+    for (int i = 0; i < s; i++) 
+        {(*this)[i] += other[i];}
+
+    return *this;
+}
+
+Bounds<T, s>& operator-=(const Bounds<T, s>& other) {
+    for (int i = 0; i < s; i++) 
+        {(*this)[i] -= other[i];}
+
+    return *this;
+}
+
+Bounds<T, s>& operator*=(const float& mult) {
+    for (int i = 0; i < s; i++) 
+    {(*this)[i] *= mult;}
+
+    return *this;
+}
+
+Bounds<T, s>& operator/=(const float& denominator) {
+    for (int i = 0; i < s; i++) 
+        {(*this)[i] /= denominator;}
+
+    return *this;
+}
 };
-
+  
 }
 }
-
-
-
-
-

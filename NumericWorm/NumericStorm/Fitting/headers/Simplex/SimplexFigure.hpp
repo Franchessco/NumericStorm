@@ -1,6 +1,5 @@
 #pragma once
-//#include"../Parameters.hpp"
-//#include"../Bounds.hpp"
+
 #include "SimplexPoint.hpp"
 
 #include <algorithm>

@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,21 +131,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Fitting\Data.hpp" />
-    <ClInclude Include="headers\Fitting\Fitter.hpp" />
-    <ClInclude Include="headers\Fitting\Fitting.hpp" />
-    <ClInclude Include="headers\Fitting\Parameters.hpp" />
-    <ClInclude Include="headers\Fitting\Simplex\Bounds.hpp" />
+    <ClInclude Include="Fitting\headers\Bounds.hpp" />
+    <ClInclude Include="Fitting\headers\Data.hpp" />
+    <ClInclude Include="Fitting\headers\Fitter.hpp" />
+    <ClInclude Include="Fitting\headers\Fitting.hpp" />
+    <ClInclude Include="Fitting\headers\MeasuringFunctions.hpp" />
+    <ClInclude Include="Fitting\headers\Parameters.hpp" />
     <ClInclude Include="headers\Fitting\Simplex\SimpleSimplex\SimpleSimplex.hpp" />
     <ClInclude Include="headers\Fitting\Simplex\SimplexFigure.hpp" />
     <ClInclude Include="headers\Fitting\Simplex\SimplexPoint.hpp" />
     <ClInclude Include="headers\NumericStorm.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Fitting\Data.cpp" />
-    <ClCompile Include="src\Fitting\Fitter.cpp" />
+    <ClCompile Include="Fitting\src\Bounds.cpp" />
+    <ClCompile Include="Fitting\src\Data.cpp" />
+    <ClCompile Include="Fitting\src\Fitter.cpp" />
+    <ClCompile Include="Fitting\src\MeasuringFunctions.cpp" />
+    <ClCompile Include="Fitting\src\Parameters.cpp" />
     <ClCompile Include="src\Fitting\Parameters.cpp" />
-    <ClCompile Include="src\Fitting\Simplex\Bounds.cpp" />
     <ClCompile Include="src\Fitting\Simplex\SimpleSimpex\SimpleSimplex.cpp" />
     <ClCompile Include="src\Fitting\Simplex\SimplexFigure.cpp" />
     <ClCompile Include="src\Fitting\Simplex\SimplexPoint.cpp" />

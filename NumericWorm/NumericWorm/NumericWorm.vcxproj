@@ -135,11 +135,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\NumericStorm\headers\Fitting\Simplex\Bounds.cpp" />
-    <ClCompile Include="..\NumericStorm\src\Fitting\Data.cpp" />
-    <ClCompile Include="..\NumericStorm\src\Fitting\MeasuringFunctions.cpp" />
-    <ClCompile Include="..\NumericStorm\src\Fitting\Parameters.cpp" />
-    <ClCompile Include="..\NumericStorm\src\Fitting\Simplex\SimplexSolver.cpp" />
     <ClCompile Include="src\Apllication.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,12 +143,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\NumericStorm\headers\Fitter.hpp" />
-    <ClInclude Include="..\NumericStorm\headers\Fitting\Data.hpp" />
-    <ClInclude Include="..\NumericStorm\headers\Fitting\MeasuringFunctions.hpp" />
-    <ClInclude Include="..\NumericStorm\headers\Fitting\Parameters.hpp" />
-    <ClInclude Include="..\NumericStorm\headers\Fitting\Simplex\SimplexSolver.hpp" />
-    <ClInclude Include="..\NumericStorm\src\Fitting\Simplex\Bounds.hpp" />
     <ClInclude Include="headers\Apllication.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

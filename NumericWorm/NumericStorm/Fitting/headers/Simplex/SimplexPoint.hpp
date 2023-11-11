@@ -19,17 +19,9 @@ public:
 
 
 	// Comparacent
-	bool operator < (const SimplexPoint<T, s>& other)
-	{return true ? m_error < other.getError() : false;};
+	bool operator <=> (const SimplexPoint<T, s>& other) const
+	{return  m_error <=> other.getError();};
 	
-	bool operator > (const SimplexPoint<T,s>& other)
-	{return !(m_error < other.getError();)};
-
-	bool operator =< (const SimplexPoint<T, s>& other)
-	{return true ? m_error = < other.getError() : false;};
-
-	bool operator <= (const SimplexPoint<T, s>& other)
-	{return true ? m_error <= other.getError() : false;};
 
 
 	// construdtor
