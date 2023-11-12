@@ -17,3 +17,11 @@
 /NumericWorm/x64/Debug
 *.json
 /NumericWorm/.vs/NumericWorm/v17/TestStore/0
+/NumericWorm/NumericStorm/NumericStorm/x64/Debug
+/NumericWorm/.vs/NumericWorm/v17/.suo
+/Debug/
+/x64/
+/NumericWorm/x64/Release
+/NumericWorm/Test/x64/Release
+*.obj
+/NumericWorm/NumericWorm/x64/Release

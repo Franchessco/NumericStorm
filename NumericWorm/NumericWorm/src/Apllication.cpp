@@ -2,10 +2,11 @@
 
 #include "../headers/Apllication.hpp"
 
+
 int main()
 {
-	{
-		using namespace NumericStorm;
+	
+		/*
 			//? initialize data to fit;;
 
 			//! std::shared_ptr<Fitting::Data<double,256>> dataToFit = std::make_shared<Fitting::Data<double,256>(Fitting::Data(x,y));
@@ -23,8 +24,14 @@ int main()
 			//! double max_error = 10;
 			//? fit data
 			//! fitter.fit(max_error);
-	}
+		*/
+		
+	NumericStorm::Fitting::Parameters<double, 2> param(1, 2);
+	std::cout << param.getParamters()[0] << std::endl;
+	std::cout << param[0] << std::endl;
+	param[0] = 10;
+	std::cout << param[0] << std::endl;
 	
-	NumericStorm::PrintMessage();
+	
 	return 0;
 }

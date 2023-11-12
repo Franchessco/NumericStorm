@@ -5,5 +5,5 @@
 #pragma once
 
 #include "gtest/gtest.h"
+#include "Fitting.hpp"
 
-#include "../../NumericStorm/headers/NumericStorm.hpp"
