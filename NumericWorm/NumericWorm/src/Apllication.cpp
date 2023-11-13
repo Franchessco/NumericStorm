@@ -33,16 +33,22 @@ int main() {
 	//! Parameters proposal_parameters = Parameters(a,b,c,d,....);
 	//! Fitter fitter = SimpleSimplex(my_model,dataToFit,min_bounds,max_bounds,);
 
-	//? setting max error 
+	//? setting max error
 	//! double max_error = 10;
 	//? fit data
 	//! fitter.fit(max_error);
-	*/	
-	
-	NumericStorm::Fitting::Parameters<double,2> param(1, 2);
+	*/
+	std::array<double, 2> d1{ 2, 2 };
+	NumericStorm::Fitting::Parameters<double, 2> param(1, 2);
+	NumericStorm::Fitting::Parameters<double, 2> param2{d1};
 	std::cout << param.getParamters()[0] << std::endl;
 	std::cout << param[0] << std::endl;
 	param[0] = 10;
 	std::cout << param[0] << std::endl;	
+
+	bool b1 = (param2 == d1);
+	bool b2 = (param == NumericStorm::Fitting::Parameters<double, 2>{10, 2});
+	std::cout << b1 << std::endl;
+	std::cout << b2 << std::endl;
 	return 0;
 }
