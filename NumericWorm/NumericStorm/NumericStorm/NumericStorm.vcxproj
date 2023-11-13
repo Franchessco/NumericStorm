@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fitting\headers\Bounds.hpp" />
+    <ClInclude Include="Fitting\headers\Fitter.hpp" />
     <ClInclude Include="Fitting\headers\Parameters.hpp" />
     <ClInclude Include="headers\Fitting.hpp" />
   </ItemGroup>

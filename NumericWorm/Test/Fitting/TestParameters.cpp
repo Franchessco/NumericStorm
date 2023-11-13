@@ -69,7 +69,6 @@ TEST_F(TestParameters, gettingParameters)
     EXPECT_EQ(a3,t3);
 
 }
-
 TEST_F(TestParameters, settingParameters) 
 {
     int t1 = 5; double t2 = 15.8; std::string t3 = "Cherno";

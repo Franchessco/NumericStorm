@@ -13,10 +13,37 @@
 //
 //	return res;  // Return the pointer to the allocated array
 //}
+class Data {
+public:
+	std::shared_ptr<std::array<double, 5>> m_data;
+
+	// Constructor
+	Data(std::shared_ptr<std::array<double, 5>> data) : m_data(data) {}
+
+	void add5() {
+		for (auto& i : *m_data) {
+			i += 5;
+		}
+	}
+};
 
 int main() {
+	std::array<double, 5> data{ 1, 2, 3, 4, 5 };
+	std::shared_ptr<std::array<double, 5>> data_ptr = std::make_shared<std::array<double, 5>>(data);
 
-	
+	Data dataClass(data_ptr);
+
+	for (auto i : *dataClass.m_data) {
+		std::cout << i << std::endl;
+	}
+
+	// Access the shared array via the shared pointer
+	dataClass.add5();
+
+	// Display the modified values through the class member's shared pointer
+	for (auto i : *dataClass.m_data) {
+		std::cout << i << std::endl;
+	}
 	//? initialize data to fit;;
 
 	//! std::shared_ptr<Fitting::Data<double,256>> dataToFit = std::make_shared<Fitting::Data<double,256>(Fitting::Data(x,y));
@@ -24,7 +51,6 @@ int main() {
 	//! my_model = {my model function};
 
 	//? settign bounds
-	//TODO Create Bounds class
 	//! Bounds min_bounds = Bounds(x_min,y_min,..);
 	//! Bounds max_bounds = Bounds(x_min,y_min,..);
 	
