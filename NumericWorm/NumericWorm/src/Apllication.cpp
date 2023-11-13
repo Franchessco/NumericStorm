@@ -15,11 +15,8 @@
 //}
 
 int main() {
-	//int* p = func(1, 2, 3, 4, 5);
 
-	// Ensure to delete the allocated array to avoid memory leaks
-	//delete[] p;
-	/*
+	
 	//? initialize data to fit;;
 
 	//! std::shared_ptr<Fitting::Data<double,256>> dataToFit = std::make_shared<Fitting::Data<double,256>(Fitting::Data(x,y));
@@ -27,9 +24,14 @@ int main() {
 	//! my_model = {my model function};
 
 	//? settign bounds
+	//TODO Create Bounds class
 	//! Bounds min_bounds = Bounds(x_min,y_min,..);
 	//! Bounds max_bounds = Bounds(x_min,y_min,..);
+	
 	//? initialize Solver
+	//TODO Create abstract Solver
+	//TODO Create Abstract SimplexSolver
+	//TODO Create Simple SimplexSolver
 	//! Parameters proposal_parameters = Parameters(a,b,c,d,....);
 	//! Fitter fitter = SimpleSimplex(my_model,dataToFit,min_bounds,max_bounds,);
 
@@ -37,18 +39,18 @@ int main() {
 	//! double max_error = 10;
 	//? fit data
 	//! fitter.fit(max_error);
-	*/
-	std::array<double, 2> d1{ 2, 2 };
-	NumericStorm::Fitting::Parameters<double, 2> param(1, 2);
-	NumericStorm::Fitting::Parameters<double, 2> param2{d1};
-	std::cout << param.getParamters()[0] << std::endl;
-	std::cout << param[0] << std::endl;
-	param[0] = 10;
-	std::cout << param[0] << std::endl;	
 
-	bool b1 = (param2 == d1);
-	bool b2 = (param == NumericStorm::Fitting::Parameters<double, 2>{10, 2});
-	std::cout << b1 << std::endl;
-	std::cout << b2 << std::endl;
+	//std::array<double, 2> d1{ 2, 2 };
+	//NumericStorm::Fitting::Parameters<double, 2> param(1, 2);
+	//NumericStorm::Fitting::Parameters<double, 2> param2{d1};
+	//std::cout << param.getParamters()[0] << std::endl;
+	//std::cout << param[0] << std::endl;
+	//param[0] = 10;
+	//std::cout << param[0] << std::endl;	
+
+	//bool b1 = (param2 == d1);
+	//bool b2 = (param == NumericStorm::Fitting::Parameters<double, 2>{10, 2});
+	//std::cout << b1 << std::endl;
+	//std::cout << b2 << std::endl;
 	return 0;
 }
