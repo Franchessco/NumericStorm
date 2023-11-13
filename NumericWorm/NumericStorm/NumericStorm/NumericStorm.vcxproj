@@ -135,6 +135,7 @@
     <ClCompile Include="src\test_lib.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fitting\headers\Bounds.hpp" />
     <ClInclude Include="Fitting\headers\Parameters.hpp" />
     <ClInclude Include="headers\Fitting.hpp" />
   </ItemGroup>

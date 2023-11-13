@@ -6,4 +6,6 @@
 
 #include "gtest/gtest.h"
 #include "Fitting.hpp"
+#include <string>
+#include <array>
 

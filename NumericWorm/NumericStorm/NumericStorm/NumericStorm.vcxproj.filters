@@ -29,5 +29,8 @@
     <ClInclude Include="Fitting\headers\Parameters.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="Fitting\headers\Bounds.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

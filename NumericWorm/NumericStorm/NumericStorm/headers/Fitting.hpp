@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Fitting/headers/Parameters.hpp"
-
+#include "../Fitting/headers/Bounds.hpp"
 
 /*
 inline void PrintMessage() { std::cout << "This is NumericStorm library!" << std::endl; };
