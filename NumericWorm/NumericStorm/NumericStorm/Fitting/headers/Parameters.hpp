@@ -9,9 +9,10 @@ template <typename T_p,size_t s_p>
 class Parameters
 {
 public:
-	template<typename ... Args>
-	Parameters(Args ...args)
-		:m_parameters{ args... } {}
+	template<class ... Args>
+	Parameters(Args... args)
+		:m_parameters{ (T_p)args... } {}
+		
 	Parameters(std::array<T_p,s_p> parameters)
 		:m_parameters(parameters) {}
 	~Parameters() {}
@@ -24,7 +25,7 @@ public:
 		return m_parameters[index];
 	}
 private:
-	std::array<T_p, s_p> m_parameters;
+	std::array<T_p,s_p> m_parameters;
 
 };
 }

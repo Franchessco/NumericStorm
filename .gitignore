@@ -25,3 +25,4 @@
 /NumericWorm/Test/x64/Release
 *.obj
 /NumericWorm/NumericWorm/x64/Release
+/NumericWorm/Test/x64/Debug/vc143.pdb
