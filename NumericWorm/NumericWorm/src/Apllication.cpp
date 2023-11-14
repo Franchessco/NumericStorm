@@ -28,6 +28,7 @@ public:
 };
 
 int main() {
+	/*
 	std::array<double, 5> data{ 1, 2, 3, 4, 5 };
 	std::shared_ptr<std::array<double, 5>> data_ptr = std::make_shared<std::array<double, 5>>(data);
 
@@ -45,7 +46,16 @@ int main() {
 		std::cout << i << std::endl;
 	}
 	//? initialize data to fit;;
+	*/
+	using const_vector = const std::vector<double>;
+	using vector_shared = std::shared_ptr< std::vector<double>>;
+	using const_shared_vector = std::shared_ptr<const_vector>;
 
+	const_vector v1{ 1,2,3,4,5,6 };
+	const_shared_vector pv_1 = std::make_shared<const_vector>(v1);
+	vector_shared pv_2 = std::make_shared<std::vector<double>>();
+	(*pv_2).resize(5);
+	std::cout << (*pv_2)[0] << std::endl;
 	//! std::shared_ptr<Fitting::Data<double,256>> dataToFit = std::make_shared<Fitting::Data<double,256>(Fitting::Data(x,y));
 	//! #typedef std::uniq_ptr<Data<double,256>> (*my_model)(const Parameters<double,4> param);
 	//! my_model = {my model function};

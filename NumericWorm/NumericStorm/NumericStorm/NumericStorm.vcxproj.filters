@@ -35,5 +35,8 @@
     <ClInclude Include="Fitting\headers\Fitter.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="Fitting\headers\Data.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

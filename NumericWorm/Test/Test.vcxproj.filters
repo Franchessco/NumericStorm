@@ -2,12 +2,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Fitting\TestParameters.cpp" />
-    <ClCompile Include="Fitting\TestBounds.cpp" />
+    <ClCompile Include="TestNumericStorm\Fitting\TestParameters.cpp" />
+    <ClCompile Include="TestNumericStorm\Fitting\TestBounds.cpp" />
+    <ClCompile Include="TestNumericStorm\TestData.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Fitting\pch.h" />
+    <ClInclude Include="TestNumericStorm\Fitting\pch.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TestNumericStorm\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
