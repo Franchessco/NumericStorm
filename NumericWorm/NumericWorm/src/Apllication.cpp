@@ -26,6 +26,11 @@ public:
 		}
 	}
 };
+int add5(int x) { return x + 5; }
+void add5ref(int& x) {  x+5; }
+int* add5refretptr(int& x) { int z = x + 5; return &z; }
+int add5ptr(int* x) { int z = *x + 5; return z; }
+
 
 int main() {
 	/*
@@ -47,7 +52,7 @@ int main() {
 	}
 	//? initialize data to fit;;
 	*/
-	using const_vector = const std::vector<double>;
+	/*using const_vector = const std::vector<double>;
 	using vector_shared = std::shared_ptr< std::vector<double>>;
 	using const_shared_vector = std::shared_ptr<const_vector>;
 
@@ -56,10 +61,39 @@ int main() {
 	vector_shared pv_2 = std::make_shared<std::vector<double>>();
 	(*pv_2).resize(5);
 	std::cout << (*pv_2)[0] << std::endl;
+	*/
 	//! std::shared_ptr<Fitting::Data<double,256>> dataToFit = std::make_shared<Fitting::Data<double,256>(Fitting::Data(x,y));
 	//! #typedef std::uniq_ptr<Data<double,256>> (*my_model)(const Parameters<double,4> param);
 	//! my_model = {my model function};
 
+	int x = 9;
+	int* x_p = &x;
+	std::cout << "x:" << x << std::endl;
+	std::cout << "x_p:" << x_p << std::endl;
+	std::cout << "&x:" << &x << std::endl;
+	std::cout << "*x_p:" << *x_p << std::endl;
+	std::cout << "-----------------" << std::endl;
+	int y = add5(x);
+	//int y_ref = add5ref(x);
+	//std::cout << "y_ref:" << y_ref << std::endl;
+	int* yref = add5refretptr(x);
+	int yptr = add5ptr(x_p);
+
+	std::cout << "x:" << x << std::endl;
+	std::cout << "x_p:" << x_p << std::endl;
+	std::cout << "&x:" << &x << std::endl;
+	std::cout << "*x_p:" << *x_p << std::endl;
+
+	std::cout << "--------------" << std::endl;
+	std::cout << "y:" << y << std::endl;
+	std::cout << "yref:" << yref << std::endl;
+	std::cout << "yptr:" << yptr << std::endl;
+	
+	std::cout << "--------------" << std::endl;
+	std::cout << "&yref:" << &yref << std::endl;
+	std::cout << "*yref:" << *yref << std::endl;
+	std::cout << "--------------" << std::endl;
+	std::cout << "&yptr " << &yptr << std::endl;
 	//? settign bounds
 	//! Bounds min_bounds = Bounds(x_min,y_min,..);
 	//! Bounds max_bounds = Bounds(x_min,y_min,..);

@@ -5,11 +5,13 @@
     <ClCompile Include="TestNumericStorm\Fitting\TestParameters.cpp" />
     <ClCompile Include="TestNumericStorm\Fitting\TestBounds.cpp" />
     <ClCompile Include="TestNumericStorm\TestData.cpp" />
+    <ClCompile Include="TestNumericStorm\Fitting\Simplex\TestSimplexPoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestNumericStorm\Fitting\pch.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="TestNumericStorm\pch.h" />
+    <ClInclude Include="TestNumericStorm\Fitting\Simplex\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

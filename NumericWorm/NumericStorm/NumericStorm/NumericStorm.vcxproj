@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Fitting\src\Parameters.cpp" />
+    <ClCompile Include="Fitting\src\Simplex\SimplexPoint.cpp" />
     <ClCompile Include="src\test_lib.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="Fitting\headers\Data.hpp" />
     <ClInclude Include="Fitting\headers\Fitter.hpp" />
     <ClInclude Include="Fitting\headers\Parameters.hpp" />
+    <ClInclude Include="Fitting\headers\Simplex\SimplexPoint.hpp" />
     <ClInclude Include="headers\Fitting.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
