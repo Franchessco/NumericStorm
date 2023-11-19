@@ -13,12 +13,10 @@ public:
 	template<class ... Args>
 	Parameters(Args... args)
 		:m_parameters{ (T_p)args... } 
-		{std::cout <<"args constructor" <<std::endl; }
+		{}
 		
 	Parameters(std::array<T_p,s_p> parameters)
-		:m_parameters(parameters) {
-		std::cout << "array constructor" << std::endl;
-	}
+		:m_parameters(parameters) {}
 	~Parameters() {}
 	
 	std::array<T_p, s_p> getParameters()
@@ -48,7 +46,7 @@ public:
 		return m_parameters == other;
 	}
 
-public:
+protected:
 	std::array<T_p,s_p> m_parameters;
 
 };
