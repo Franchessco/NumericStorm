@@ -36,7 +36,7 @@ TEST(CreatingData, CreatingBasedOnArray)
 };
 TEST(CreatingData, CreatingBasedOnArgs) {};
 
-TEST_F(TestData, GetData) {};
-TEST_F(TestData, Constdata) {};
-TEST_F(TestData, IteratingThroughData) {};
+//TEST_F(TestData, GetData) {};
+//TEST_F(TestData, Constdata) {};
+//TEST_F(TestData, IteratingThroughData) {};
 

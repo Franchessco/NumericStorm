@@ -113,7 +113,7 @@ int main() {
 	//std::array<double, 2> d1{ 2, 2 };
 	//NumericStorm::Fitting::Parameters<double, 2> param(1, 2);
 	//NumericStorm::Fitting::Parameters<double, 2> param2{d1};
-	//std::cout << param.getParamters()[0] << std::endl;
+	//std::cout << param.getParameters()[0] << std::endl;
 	//std::cout << param[0] << std::endl;
 	//param[0] = 10;
 	//std::cout << param[0] << std::endl;	

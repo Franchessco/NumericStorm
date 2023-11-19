@@ -23,7 +23,7 @@ public:
 
 TEST_F(TestBounds, constructingBoundsbylist)
 {
-    auto a = p1.getParamters();
+    auto a = p1.getParameters();
     EXPECT_EQ(a[0], 1);
     EXPECT_EQ(a[1], 2);
 
@@ -43,7 +43,7 @@ TEST_F(TestBounds, constructingBoundsbyarray)
     Bounds<double, 2> p5{ d2 };
     Bounds<std::string, 3> p6{ d3 };
 
-    bool b1 = (p4.getParamters() == d1), b2 = (p5.getParamters() == d2), b3 = (p6.getParamters() == d3);
+    bool b1 = (p4.getParameters() == d1), b2 = (p5.getParameters() == d2), b3 = (p6.getParameters() == d3);
 
     EXPECT_EQ(b1, 1);
     EXPECT_EQ(b2, 1);

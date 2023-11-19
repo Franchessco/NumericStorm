@@ -17,8 +17,11 @@ public:
 		:m_parameters(parameters) {}
 	~Parameters() {}
 	
-	std::array<T_p, s_p> getParamters() 
+	std::array<T_p, s_p> getParameters()
 	{ return m_parameters; }
+
+	std::array<T_p, s_p> getParameters() const
+	{return m_parameters;}
 
 public:
 	T_p& operator[](int index) 
@@ -31,14 +34,16 @@ public:
 		if (index >= s_p) { return m_parameters[0]; }
 		return m_parameters[index];
 	}
+
 	bool operator ==(const Parameters<T_p, s_p>& other) const
 	{
-		return m_parameters == other;
+		return m_parameters == other.getParameters();
 	}
 	bool operator ==(const std::array<T_p, s_p>& other) const
 	{
 		return m_parameters == other;
 	}
+
 private:
 	std::array<T_p,s_p> m_parameters;
 
