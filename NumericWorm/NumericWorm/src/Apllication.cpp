@@ -1,7 +1,6 @@
 
 
 #include "../headers/Apllication.hpp"
-
 //template<typename... Ts>
 //int* func(Ts... args) {
 //	const int size = sizeof...(args);
@@ -65,35 +64,43 @@ int main() {
 	//! std::shared_ptr<Fitting::Data<double,256>> dataToFit = std::make_shared<Fitting::Data<double,256>(Fitting::Data(x,y));
 	//! #typedef std::uniq_ptr<Data<double,256>> (*my_model)(const Parameters<double,4> param);
 	//! my_model = {my model function};
+	using namespace NumericStorm::Fitting;
 
-	int x = 9;
-	int* x_p = &x;
-	std::cout << "x:" << x << std::endl;
-	std::cout << "x_p:" << x_p << std::endl;
-	std::cout << "&x:" << &x << std::endl;
-	std::cout << "*x_p:" << *x_p << std::endl;
-	std::cout << "-----------------" << std::endl;
-	int y = add5(x);
-	//int y_ref = add5ref(x);
-	//std::cout << "y_ref:" << y_ref << std::endl;
-	int* yref = add5refretptr(x);
-	int yptr = add5ptr(x_p);
+	//int x = 9;
+	//int* x_p = &x;
+	//std::cout << "x:" << x << std::endl;
+	//std::cout << "x_p:" << x_p << std::endl;
+	//std::cout << "&x:" << &x << std::endl;
+	//std::cout << "*x_p:" << *x_p << std::endl;
+	//std::cout << "-----------------" << std::endl;
+	//int y = add5(x);
+	////int y_ref = add5ref(x);
+	////std::cout << "y_ref:" << y_ref << std::endl;
+	//int* yref = add5refretptr(x);
+	//int yptr = add5ptr(x_p);
 
-	std::cout << "x:" << x << std::endl;
-	std::cout << "x_p:" << x_p << std::endl;
-	std::cout << "&x:" << &x << std::endl;
-	std::cout << "*x_p:" << *x_p << std::endl;
+	//std::cout << "x:" << x << std::endl;
+	//std::cout << "x_p:" << x_p << std::endl;
+	//std::cout << "&x:" << &x << std::endl;
+	//std::cout << "*x_p:" << *x_p << std::endl;
 
-	std::cout << "--------------" << std::endl;
-	std::cout << "y:" << y << std::endl;
-	std::cout << "yref:" << yref << std::endl;
-	std::cout << "yptr:" << yptr << std::endl;
-	
-	std::cout << "--------------" << std::endl;
-	std::cout << "&yref:" << &yref << std::endl;
-	std::cout << "*yref:" << *yref << std::endl;
-	std::cout << "--------------" << std::endl;
-	std::cout << "&yptr " << &yptr << std::endl;
+	//std::cout << "--------------" << std::endl;
+	//std::cout << "y:" << y << std::endl;
+	//std::cout << "yref:" << yref << std::endl;
+	//std::cout << "yptr:" << yptr << std::endl;
+	//
+	//std::cout << "--------------" << std::endl;
+	//std::cout << "&yref:" << &yref << std::endl;
+	//std::cout << "*yref:" << *yref << std::endl;
+	//std::cout << "--------------" << std::endl;
+	//std::cout << "&yptr " << &yptr << std::endl;
+	Parameters<int, 2> p1{ 1, 2 };
+	Parameters<double, 2> p2{ 1.0, 2.2 };
+
+	std::array<int, 2> d1{ 1, 2 };
+	std::array<double, 2> d2{ 1.0, 2.2 };
+	Parameters<int, 2> p4{ d1 };
+	Parameters<double, 2> p5{ d2 };
 	//? settign bounds
 	//! Bounds min_bounds = Bounds(x_min,y_min,..);
 	//! Bounds max_bounds = Bounds(x_min,y_min,..);

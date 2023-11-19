@@ -33,7 +33,7 @@ TEST_F(TestParameters, constructingParametersbyarray)
 {
     Parameters<int, 2> p4{ d1 };
     Parameters<double, 2> p5{ d2 };
-     bool b1 = (p4.getParameters() == d1), b2 = (p5.getParameters() == d2);
+    bool b1 = (p4.getParameters() == d1), b2 = (p5.getParameters() == d2);
     EXPECT_EQ(b1,1);
     EXPECT_EQ(b2,1);
     

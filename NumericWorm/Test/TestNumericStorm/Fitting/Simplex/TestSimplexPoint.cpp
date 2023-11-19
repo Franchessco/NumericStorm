@@ -17,6 +17,7 @@ struct CreatingSimpelxPoint:public testing::Test
 {
 	TestData testdata;
 };
+
 struct OperatorSimplexPoint :public testing::Test
 {
 	TestData testdata;
@@ -25,7 +26,6 @@ struct OperatorSimplexPoint :public testing::Test
 
 
 };
-
 
 TEST_F(CreatingSimpelxPoint, creatingByList) 
 {
@@ -79,3 +79,26 @@ TEST_F(OperatorSimplexPoint, settingAccesOperator)
 	EXPECT_EQ(d1[0], testdata.t1);
 	EXPECT_EQ(d2[0], testdata.t2);
 }
+
+struct BoundsSetting : public testing::Test
+{
+	Bounds<double, 4> minBounds{1,2,3,4};
+	Bounds<double, 4> maxBounds{ 11,12,13,14};
+
+	SimplexPoint<double, 4> P_onlymin{ 0.1,0.2,0.3,0.4 };
+	SimplexPoint<double, 4> P_onlymax{ 21,22,23,24 };
+	SimplexPoint<double, 4> P_mix{ 21,0.1,28,0.5 };
+
+
+};
+
+TEST_F(BoundsSetting, TestBoundsSetting) 
+{
+	P_onlymin.setToBounds(minBounds, maxBounds);
+	EXPECT_TRUE(P_onlymin == minBounds);
+
+	P_onlymax.setToBounds(minBounds, maxBounds);
+	EXPECT_TRUE(P_onlymax == maxBounds);
+
+
+};
