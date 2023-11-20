@@ -22,6 +22,7 @@ struct CreatingSimpelxPoint:public testing::Test
 {
 	TestData testdata;
 };
+
 struct OperatorSimplexPoint :public testing::Test
 {
 	
@@ -31,6 +32,54 @@ struct OperatorSimplexPoint :public testing::Test
 
 
 };
+
+struct BoundsSetting : public testing::Test
+{
+	Bounds<4> minBounds{1,2,3,4};
+	Bounds<4> maxBounds{ 11,12,13,14};
+
+	SimplexPoint<4> P_onlymin{ 0.1,0.2,0.3,0.4 };
+	SimplexPoint<4> P_onlymax{ 21,22,23,24 };
+	SimplexPoint<4> P_mix{ 21,0.1,28,0.5 };
+
+
+};
+
+struct ModelAndError : public testing::Test {
+	
+	SimplexPoint<2> linearModel{ 1.0, 2.0 };
+	model linmodel = modelOfLine;
+	ErrorModel errormodel = chi2;
+	
+	std::vector<double> x = { 0,1,2,3,4 };
+	std::vector<double> y = { 2,3,4,5,6 };
+	std::vector<double> y1 = { 2.1,3.1,4.1,5.1,6.1 };
+	double trueError = 0.05;
+	
+};
+
+std::vector<double> modelOfLine(Parameters<2> arguments, std::vector<double>& x) {
+	size_t s = x.size();
+	std::vector<double> y;y .resize(s);
+	for (size_t i = 0; i < s; ++i) 
+		y[i] = arguments[0]*x[i] + arguments[1];
+	return y;
+}
+double chi2(const std::vector<double>& mother, const std::vector<double>& child)
+{
+	size_t s = child.size();
+	std::vector <double> v; v.resize(s);
+
+	for (size_t i = 0; i < s; i++)
+		v[i] = std::pow((mother[i] - child[i]), 2);
+	double error = std::accumulate(v.begin(), v.end(), 0.0);
+	return error;
+
+};
+
+using model = std::vector<double>(*)(Parameters<2> param, std::vector<double>& args);
+using ErrorModel = double(*)(const std::vector<double>& mother, const std::vector<double>& child);
+
 
 TEST_F(CreatingSimpelxPoint, creatingByList) 
 {
@@ -84,19 +133,6 @@ TEST_F(OperatorSimplexPoint, settingAccesOperator)
 	EXPECT_EQ(d1[0], testdata.t1);
 	EXPECT_EQ(d2[0], testdata.t2);
 }
-
-struct BoundsSetting : public testing::Test
-{
-	Bounds<4> minBounds{1,2,3,4};
-	Bounds<4> maxBounds{ 11,12,13,14};
-
-	SimplexPoint<4> P_onlymin{ 0.1,0.2,0.3,0.4 };
-	SimplexPoint<4> P_onlymax{ 21,22,23,24 };
-	SimplexPoint<4> P_mix{ 21,0.1,28,0.5 };
-
-
-};
-
 TEST_F(BoundsSetting, TestBoundsSetting) 
 {
 	P_onlymin.setToBounds(minBounds, maxBounds);
@@ -108,42 +144,15 @@ TEST_F(BoundsSetting, TestBoundsSetting)
 
 };
 
-std::vector<double> modelOfLine(Parameters<2> arguments, std::vector<double>& x) {
-	
-	for (size_t i = 0; i < x.size(); ++i) 
-		x[i] *= arguments[0]+arguments[1];
-	return x;
-}
-double chi2(const std::vector<double>& mother, const std::vector<double>& child)
-{
-	size_t s = child.size();
-	std::vector <double> v; v.resize(s);
-
-	for (size_t i = 0; i < s; i++)
-		v[i] = std::pow((mother[i] - child[i]), 2);
-	return std::accumulate(v.begin(), v.end(), 0);
-
-};
-using model = std::vector<double>(*)(Parameters<2> param, std::vector<double>& args);
-using ErrorModel = double(*)(const std::vector<double>& mother, const std::vector<double>& child);
-
-struct ModelAndError : public testing::Test {
-	
-	SimplexPoint<2> linearModel{ 1.0, 2.0 };
-	model linmodel = modelOfLine;
-	ErrorModel errormodel = chi2;
-	
-	std::array<double,5> x = { 0,1,2,3,4 };
-	std::array<double,5> y = { 2,3,4,5,6 };
-	std::array<double,5> error = {0.1,0.1,0.1,0.1,0.1};
-	double trueError = 0.05;
-	
-};
 TEST_F(ModelAndError,testingSettingModelAndError) 
 {
 	linearModel.setDataModel(modelOfLine);
 	linearModel.setErrorModel(chi2);
 
-
-
+	std::vector<double> calculatedData = linearModel.calculateData(x);
+	double error = linearModel.calculateError(y, calculatedData);
+	double secondError = linearModel.calculateError(y1,calculatedData);
+	EXPECT_EQ(calculatedData, y);
+	EXPECT_EQ(error, 0);
+	EXPECT_NEAR(secondError, trueError,0.0001);
 };
