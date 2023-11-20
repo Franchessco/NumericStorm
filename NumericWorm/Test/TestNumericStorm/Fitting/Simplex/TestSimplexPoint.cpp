@@ -148,4 +148,79 @@ TEST_F(ModelAndError,testingSettingModelAndError)
 };
 
 
+struct TestSimplexPointAddSubOverload :public testing::Test
+{
+	SimplexPoint<2> p1{ 1,2 }, p2{ 2,3 }, p3{ 3,5 };
+	SimplexPoint<2> p1_s{ 1,2 }, p2_s{ 2,3 }, p3_s{ -1,-1 };
+	double add = 2, sub = 2;
+};
+struct TestSimplexPointMulDivOverload :public testing::Test
+{
+	SimplexPoint<2> p1{ 1,2 }, p2{ 1,2 };
+	SimplexPoint<2> p1_d{ 2,4 }, p2_d{ 2,4 };
+	double mull = 2, div = 2;
+};
+TEST_F(TestSimplexPointAddSubOverload, additionBetweenSimplexPoint)
+{
+	SimplexPoint<2> result = p1 + p2;
+	SimplexPoint<2> result2 = p1_s - p2_s;
 
+	EXPECT_NEAR(result[0], p3[0], 0.001);
+	EXPECT_NEAR(result[1], p3[1], 0.001);
+
+	EXPECT_NEAR(result2[0], p3_s[0], 0.001);
+	EXPECT_NEAR(result2[1], p3_s[1], 0.001);
+}
+TEST_F(TestSimplexPointAddSubOverload, compoundAddition)
+{
+	SimplexPoint<2> result = p1, result2 = p1_s;
+	result += p2;
+	result2 -= p2_s;
+	EXPECT_NEAR(result[0], p3[0], 0.001);
+	EXPECT_NEAR(result[1], p3[1], 0.001);
+	EXPECT_NEAR(result2[0], p3_s[0], 0.001);
+	EXPECT_NEAR(result2[1], p3_s[1], 0.001);
+}
+TEST_F(TestSimplexPointAddSubOverload, additionWithScalar)
+{
+	//SimplexPoint<2> p1{ 1,2 }, p2{ 2,3 }, p3{ 3,5 };
+	//SimplexPoint<2> p1_s{ 1,2 }, p2_s{ 2,3 }, p3_s{ -1,-1 };
+	SimplexPoint<2> result = p1, result2 = p1_s, result3 = p2, result4 = p2_s;
+	result = p1 + add;
+	result2 = p1_s - sub;
+	result3 += add;
+	result4 -= sub;
+
+	EXPECT_NEAR(result[0], 3, 0.001);
+	EXPECT_NEAR(result[1], 4, 0.001);
+
+	EXPECT_NEAR(result2[0], -1, 0.001);
+	EXPECT_NEAR(result2[1], 0, 0.001);
+
+	EXPECT_NEAR(result3[0], 4, 0.001);
+	EXPECT_NEAR(result3[1], 5, 0.001);
+
+	EXPECT_NEAR(result4[0], 0, 0.001);
+	EXPECT_NEAR(result4[1], 1, 0.001);
+
+}
+TEST_F(TestSimplexPointMulDivOverload, mul)
+{
+	SimplexPoint<2> result1 = p1, result2 = p2;
+	SimplexPoint<2> result3 = p1_d, result4 = p2_d;
+
+	result1 = p1 * mull; result2 *= mull;
+	result3 = p1 / div; result4 /= div;
+
+	EXPECT_NEAR(result1[0], 2, 0.001);
+	EXPECT_NEAR(result1[1], 4, 0.001);
+
+	EXPECT_NEAR(result2[0], 2, 0.001);
+	EXPECT_NEAR(result2[1], 4, 0.001);
+
+	EXPECT_NEAR(result3[0], 1, 0.001);
+	EXPECT_NEAR(result3[1], 2, 0.001);
+
+	EXPECT_NEAR(result4[0], 1, 0.001);
+	EXPECT_NEAR(result4[1], 2, 0.001);
+};
