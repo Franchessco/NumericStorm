@@ -9,59 +9,46 @@
 namespace NumericStorm 
 {
 namespace Fitting {
-template <typename T_p, size_t s_p,typename T_d>
-class SimplexPoint :public Parameters<T_p,s_p>
+template < size_t s_p, typename T_p = double, typename T_d=double>
+class SimplexPoint :public Parameters<s_p,T_p>
 {
 public:
     template<class ... Args>
     SimplexPoint(Args ...args)
-        :Parameters<T_p, s_p>(args...), m_error(0),m_model(nullptr) {};
+        :Parameters<s_p,T_p>(args...), m_error(0), m_model(nullptr),m_errorModel(nullptr) {};
     SimplexPoint(std::array<T_p, s_p> parameters)
-        :Parameters<T_p, s_p>(parameters),m_error(0),m_model(nullptr) {};
-    void setToBounds(const Bounds<T_p,s_p> minBounds, const Bounds<T_p,s_p> maxBounds) 
+        :Parameters<T_p, s_p>(parameters),m_error(0),m_model(nullptr),m_errorModel(nullptr) {};
+    
+
+    template <typename T_d>
+    std::vector<T_d> calculateData(std::vector<T_d> arguments) 
+    {return m_model(this->m_parameters, arguments);}
+        
+    using DataModel = std::vector<T_d>(*)(Parameters<s_p,T_p>param, std::vector<T_d>& args);
+    using ErrorModel = double(*)(const std::vector<T_d>& mother, const std::vector<T_d>& child);
+private:
+    double m_error;
+    DataModel m_model;
+    ErrorModel m_errorModel;
+
+public:
+    inline void setDataModel(DataModel modelToSet) {m_model = modelToSet;}
+    inline void setErrorModel(ErrorModel modelToSet) { m_errorModel = modelToSet; }    
+    inline double getError() { return m_error; }
+
+    void setToBounds(const Bounds<s_p,T_p> minBounds, const Bounds<s_p,T_p> maxBounds) 
     {
         setToMinBounds(minBounds);
         setToMaxBounds(maxBounds);
     }
-
-    /*
-    template<typename T_d>
-    double calculateError(const std::vector<T_d>& motherCharacteristic, 
-                            std::vector<T_d> arguments)
-    {
-        double error=0.0;
-        std::vector<T_d> calculatedData = calculateData(arguments);
-        for (int i = 0; i < motherCharacteristic.size(); i++)
-        {
-            calculatedData[i] -= motherCharacteristic[i];
-            calculatedData[i] *= calculatedData[i];
-        }
-        return std::accumulate(calculatedData.begin(), calculatedData.end(), 0);
-
-    };
-    template <typename T_d>
-    std::vector<T_d> calculateData(std::vector<T_d> arguments) 
-    {
-        return m_model(this->m_parameters, arguments);
-    }
-     */
-    
-    using DataModel = std::vector<T_d>(*)(Parameters<T_p, s_p> param, std::vector<T_d>& args);
 private:
-    double m_error;
-    
-    DataModel m_model;
-public:
-    
-    void setModel(DataModel modelToSet) {m_model = modelToSet;}
-private:
-    void setToMinBounds(const Bounds<T_p,s_p> minBounds) 
+    void setToMinBounds(const Bounds<s_p,T_p> minBounds) 
     {
     for (int i = 0; i < s_p; i++)
         if (this->m_parameters[i] < minBounds[i])
             this->m_parameters[i] = minBounds[i];
     }
-    void setToMaxBounds(const Bounds<T_p,s_p> maxBounds) 
+    void setToMaxBounds(const Bounds<s_p,T_p> maxBounds) 
     {
     for (int i = 0; i < s_p; i++)
         if (this->m_parameters[i] > maxBounds[i])

@@ -55,8 +55,8 @@ int main() {
 	using vector_shared = std::shared_ptr< std::vector<double>>;
 	using const_shared_vector = std::shared_ptr<const_vector>;
 
-	const_vector v1{ 1,2,3,4,5,6 };
-	const_shared_vector pv_1 = std::make_shared<const_vector>(v1);
+	const_vector v{ 1,2,3,4,5,6 };
+	const_shared_vector pv_1 = std::make_shared<const_vector>(v);
 	vector_shared pv_2 = std::make_shared<std::vector<double>>();
 	(*pv_2).resize(5);
 	std::cout << (*pv_2)[0] << std::endl;
@@ -94,13 +94,13 @@ int main() {
 	//std::cout << "*yref:" << *yref << std::endl;
 	//std::cout << "--------------" << std::endl;
 	//std::cout << "&yptr " << &yptr << std::endl;
-	Parameters<int, 2> p1{ 1, 2 };
-	Parameters<double, 2> p2{ 1.0, 2.2 };
+	Parameters<2,int> p1{ 1, 2 };
+	Parameters<2> p2{ 1.0, 2.2 };
 
-	std::array<int, 2> d1{ 1, 2 };
+	std::array<int,2> d1{ 1, 2 };
 	std::array<double, 2> d2{ 1.0, 2.2 };
-	Parameters<int, 2> p4{ d1 };
-	Parameters<double, 2> p5{ d2 };
+	Parameters<2,int> p4{ d1 };
+	Parameters<2> p5{ d2 };
 	//? settign bounds
 	//! Bounds min_bounds = Bounds(x_min,y_min,..);
 	//! Bounds max_bounds = Bounds(x_min,y_min,..);

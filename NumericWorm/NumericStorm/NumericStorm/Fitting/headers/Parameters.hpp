@@ -6,13 +6,13 @@
 namespace NumericStorm {
 namespace Fitting 
 {
-template <typename T_p,size_t s_p>
+template <size_t s_p, typename T_p = double>
 class Parameters
 {
 public:
 	template<class ... Args>
 	Parameters(Args... args)
-		:m_parameters{ (T_p)args... } 
+		:m_parameters{ (T_p)args... }
 		{}
 		
 	Parameters(std::array<T_p,s_p> parameters)
@@ -37,11 +37,11 @@ public:
 		return m_parameters[index];
 	}
 
-	bool operator ==(const Parameters<T_p, s_p>& other) const
+	bool operator ==(const Parameters<s_p,T_p>& other) const
 	{
 		return m_parameters == other.getParameters();
 	}
-	bool operator ==(const std::array<T_p, s_p>& other) const
+	bool operator ==(const std::array<T_p,s_p>& other) const
 	{
 		return m_parameters == other;
 	}

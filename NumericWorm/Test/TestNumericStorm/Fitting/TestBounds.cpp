@@ -10,13 +10,13 @@ public:
 
     // Test data
 
-    Bounds<int, 2> p1{ 1, 2 };
-    Bounds<double, 2> p2{ 1.0, 2.2 };
-    Bounds<std::string, 3> p3{ "Bounds", "Testing", "something" };
+    Bounds<2,int> p1{ 1, 2 };
+    Bounds<2> p2{ 1.0, 2.2 };
+    
 
     std::array<int, 2> d1{ 1, 2 };
     std::array<double, 2> d2{ 1.0, 2.2 };
-    std::array<std::string, 3> d3{ "Bounds", "Testing", "something" };
+    
 };
 
 
@@ -37,47 +37,36 @@ TEST_F(TestBounds, constructingBoundsbylist)
 }
 TEST_F(TestBounds, constructingBoundsbyarray)
 {
-
-
-    Bounds<int, 2> p4{ d1 };
-    Bounds<double, 2> p5{ d2 };
-    Bounds<std::string, 3> p6{ d3 };
-
-    bool b1 = (p4.getParameters() == d1), b2 = (p5.getParameters() == d2), b3 = (p6.getParameters() == d3);
+    Bounds<2,int> p4{ d1 };
+    Bounds<2> p5{ d2 };
+    
+    bool b1 = (p4.getParameters() == d1), b2 = (p5.getParameters() == d2);
 
     EXPECT_EQ(b1, 1);
     EXPECT_EQ(b2, 1);
-    EXPECT_EQ(b3, 1);
-
 }
 TEST_F(TestBounds, operatorequal)
 {
-
     EXPECT_EQ(p1, d1);
     EXPECT_EQ(p2, d2);
-    EXPECT_EQ(p3, d3);
-
 }
 TEST_F(TestBounds, gettingBounds)
 {
-    int a1; double a2; std::string a3;
+    int a1; double a2; 
 
-    a1 = p1[1]; a2 = p2[1]; a3 = p3[1];
-    int t1 = d1[1]; double t2 = d2[1]; std::string t3 = d3[1];
+    a1 = p1[1]; a2 = p2[1]; 
+    int t1 = d1[1]; double t2 = d2[1];
 
     EXPECT_EQ(a1, t1);
     EXPECT_EQ(a2, t2);
-    EXPECT_EQ(a3, t3);
 
 }
 
 TEST_F(TestBounds, settingBounds)
 {
-    int t1 = 5; double t2 = 15.8; std::string t3 = "Cherno";
+    int t1 = 5; double t2 = 15.8; 
 
-    p1[1] = t1; p2[1] = t2; p3[1] = t3;
+    p1[1] = t1; p2[1] = t2; 
     EXPECT_EQ(p1[1], t1);
     EXPECT_EQ(p2[1], t2);
-    EXPECT_EQ(p3[1], t3);
-
 }

@@ -6,8 +6,8 @@ using namespace NumericStorm::Fitting;
 struct TestParameters:public testing::Test
 {
 public:
-    Parameters<int, 2> p1{ 1, 2 };
-    Parameters<double, 2> p2{ 1.0, 2.2 };
+    Parameters<2,int> p1{ 1, 2 };
+    Parameters<2> p2{ 1.0, 2.2 };
     
     std::array<int, 2> d1{ 1, 2 };
     std::array<double, 2> d2{ 1.0, 2.2 };
@@ -31,8 +31,8 @@ TEST_F(TestParameters, constructingParametersbylist)
 }
 TEST_F(TestParameters, constructingParametersbyarray) 
 {
-    Parameters<int, 2> p4{ d1 };
-    Parameters<double, 2> p5{ d2 };
+    Parameters<2,int> p4{ d1 };
+    Parameters<2> p5{ d2 };
     bool b1 = (p4.getParameters() == d1), b2 = (p5.getParameters() == d2);
     EXPECT_EQ(b1,1);
     EXPECT_EQ(b2,1);
