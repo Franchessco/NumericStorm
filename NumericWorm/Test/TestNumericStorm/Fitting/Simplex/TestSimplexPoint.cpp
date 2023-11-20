@@ -17,6 +17,27 @@ struct TestData
 //template<typename T_d>
 //typedef std::vector<T_d>(*model)(std::array<double, 2> param,std::vector<T_d>arguments);
 
+std::vector<double> modelOfLine(Parameters<2> arguments, std::vector<double>& x) {
+	size_t s = x.size();
+	std::vector<double> y;y .resize(s);
+	for (size_t i = 0; i < s; ++i) 
+		y[i] = arguments[0]*x[i] + arguments[1];
+	return y;
+}
+double chi2(const std::vector<double>& mother, const std::vector<double>& child)
+{
+	size_t s = child.size();
+	std::vector <double> v; v.resize(s);
+
+	for (size_t i = 0; i < s; i++)
+		v[i] = std::pow((mother[i] - child[i]), 2);
+	double error = std::accumulate(v.begin(), v.end(), 0.0);
+	return error;
+
+};
+
+using model = std::vector<double>(*)(Parameters<2> param, std::vector<double>& args);
+using ErrorModel = double(*)(const std::vector<double>& mother, const std::vector<double>& child);
 
 struct CreatingSimpelxPoint:public testing::Test
 {
@@ -44,42 +65,18 @@ struct BoundsSetting : public testing::Test
 
 
 };
-
 struct ModelAndError : public testing::Test {
 	
 	SimplexPoint<2> linearModel{ 1.0, 2.0 };
 	model linmodel = modelOfLine;
 	ErrorModel errormodel = chi2;
-	
+
 	std::vector<double> x = { 0,1,2,3,4 };
 	std::vector<double> y = { 2,3,4,5,6 };
 	std::vector<double> y1 = { 2.1,3.1,4.1,5.1,6.1 };
 	double trueError = 0.05;
 	
 };
-
-std::vector<double> modelOfLine(Parameters<2> arguments, std::vector<double>& x) {
-	size_t s = x.size();
-	std::vector<double> y;y .resize(s);
-	for (size_t i = 0; i < s; ++i) 
-		y[i] = arguments[0]*x[i] + arguments[1];
-	return y;
-}
-double chi2(const std::vector<double>& mother, const std::vector<double>& child)
-{
-	size_t s = child.size();
-	std::vector <double> v; v.resize(s);
-
-	for (size_t i = 0; i < s; i++)
-		v[i] = std::pow((mother[i] - child[i]), 2);
-	double error = std::accumulate(v.begin(), v.end(), 0.0);
-	return error;
-
-};
-
-using model = std::vector<double>(*)(Parameters<2> param, std::vector<double>& args);
-using ErrorModel = double(*)(const std::vector<double>& mother, const std::vector<double>& child);
-
 
 TEST_F(CreatingSimpelxPoint, creatingByList) 
 {
@@ -90,7 +87,6 @@ TEST_F(CreatingSimpelxPoint, creatingByList)
 	EXPECT_EQ(e1, t1);
 	EXPECT_EQ(e2, t2);
 }
-
 TEST_F(CreatingSimpelxPoint, creatingByCreatedArray)
 {
 	SimplexPoint<2> d1{testdata.p1};
@@ -100,14 +96,11 @@ TEST_F(CreatingSimpelxPoint, creatingByCreatedArray)
 	EXPECT_EQ(e1, testdata.p1[0]);
 	EXPECT_EQ(e2, testdata.p2[0]);
 }
-
 TEST_F(OperatorSimplexPoint, operatorEqual)
 {
-
 	EXPECT_EQ(d1,testdata.p1);
 	EXPECT_EQ(d2,testdata.p2);
 }
-
 TEST_F(OperatorSimplexPoint, testingGettingAccesOperator)
 {
 	EXPECT_EQ(d1[0], testdata.t1 );
@@ -119,7 +112,6 @@ TEST_F(OperatorSimplexPoint, testingGettingAccesOperator)
 	EXPECT_EQ(d1[-1], testdata.t1);
 	
 }
-
 TEST_F(OperatorSimplexPoint, settingAccesOperator) 
 {
 	testdata.t1 = 10.0;  testdata.t2 = 5;
@@ -140,8 +132,6 @@ TEST_F(BoundsSetting, TestBoundsSetting)
 
 	P_onlymax.setToBounds(minBounds, maxBounds);
 	EXPECT_TRUE(P_onlymax == maxBounds);
-
-
 };
 
 TEST_F(ModelAndError,testingSettingModelAndError) 
@@ -156,3 +146,6 @@ TEST_F(ModelAndError,testingSettingModelAndError)
 	EXPECT_EQ(error, 0);
 	EXPECT_NEAR(secondError, trueError,0.0001);
 };
+
+
+

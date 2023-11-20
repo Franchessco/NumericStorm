@@ -6,7 +6,7 @@
 namespace NumericStorm {
 namespace Fitting 
 {
-template <size_t s_p, typename T_p = double>
+template <size_t s_p, typename T_p = double,size_t s_o=s_p,typename T_o = double>
 class Parameters
 {
 public:
@@ -25,7 +25,6 @@ public:
 	std::array<T_p, s_p> getParameters() const
 	{return m_parameters;}
 
-public:
 	T_p& operator[](int index) 
 	{
 		if (index >= s_p) { return m_parameters[0];}
@@ -45,6 +44,61 @@ public:
 	{
 		return m_parameters == other;
 	}
+
+	Parameters<s_p, T_p>& operator = (const Parameters<s_o, T_o>& other) 
+	{
+		if (this == &other) 
+			return *this;
+		m_parameters = other.getParameters();
+		return *this;
+	}
+
+	Parameters<s_p, T_p>& operator += (const Parameters<s_o, T_o>& other) 
+	{	
+		for (size_t i = 0; i < s_p; i++)
+			m_parameters[i] += other[i];
+		return *this;
+	};
+	Parameters<s_p, T_p>& operator -= (const Parameters<s_o, T_o>& other) 
+	{	
+		for (size_t i=0; i <s_p;i++)
+			m_parameters[i] -= other[i];
+		return *this;
+	};
+
+	Parameters<s_p, T_p>& operator += (double& other) 
+	{
+		for (size_t i = 0; i < s_p; i++)
+			m_parameters[i] += other;
+		return *this;
+	};
+	Parameters<s_p, T_p>& operator -= (double& other)
+	{
+		for (size_t i = 0; i < s_p; i++)
+			m_parameters[i] -= other;
+		return *this;
+	};
+	Parameters<s_p, T_p>& operator *= (double& other)
+	{
+		for (size_t i = 0; i < s_p; i++)
+			m_parameters[i] *= other;
+		return *this;
+	};
+	Parameters<s_p, T_p>& operator /= (double& other)
+	{
+		for (size_t i = 0; i < s_p; i++)
+			m_parameters[i] /= other;
+		return *this;
+	};
+
+	Parameters<s_p, T_p> operator + (const Parameters<s_o, T_o>& other) 
+		{return *this += other;};
+	Parameters<s_p, T_p> operator - (const Parameters<s_o, T_o>& other) 
+		{ return *this -= other; };
+	Parameters<s_p, T_p> operator + (double& other) {return *this += other; };
+	Parameters<s_p, T_p> operator - (double& other) {return *this -= other; };
+	Parameters<s_p, T_p> operator * (double& other) {return *this *= other; };
+	Parameters<s_p, T_p> operator / (double& other) {return *this /= other; };
 
 protected:
 	std::array<T_p,s_p> m_parameters;
